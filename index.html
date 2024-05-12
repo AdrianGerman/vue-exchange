@@ -8,17 +8,22 @@
   </head>
   <body>
     <div id="app">
-      <img v-bind:src="img" v-bind:alt="name" />
+      <img
+        v-on:mouseover="toggleShowPrices"
+        v-on:mouseout="toggleShowPrices"
+        v-bind:src="img"
+        v-bind:alt="name"
+      />
       <h1>
         {{ name }}
         <span v-if="changePercent > 0">👍</span>
         <span v-else-if="changePercent < 0">👎</span>
         <span v-else>🤞</span>
       </h1>
-      <ul>
-        <li v-for="(p, i) in prices" :key="p">{{ i }} - {{ p }}</li>
-      </ul>
-      <ul>
+      <span v-on:click="toggleShowPrices">
+        {{ showPrices ? 'Ocultar precios' : 'Ver precios' }}
+      </span>
+      <ul v-show="showPrices">
         <li v-for="p in pricesWithDays" :key="p.day">{{ p.day }} - {{ p.value }}</li>
       </ul>
     </div>
