@@ -3,7 +3,8 @@ new Vue({
 
   data() {
     return {
-      title: "Title!!!",
+      name: "Bitcoin",
+      img: "https://cryptologos.cc/logos/bitcoin-btc-logo.png",
     };
   },
 });
