@@ -23,6 +23,10 @@
       <span v-on:click="toggleShowPrices">
         {{ showPrices ? 'Ocultar precios' : 'Ver precios' }}
       </span>
+      <br />
+
+      <input type="number" v-model="value" />
+      <span>{{ convertedValue }}</span>
       <ul v-show="showPrices">
         <li
           v-bind:class="{ orange: p.value == price, red: p.value < price, green: p.value > price }"
