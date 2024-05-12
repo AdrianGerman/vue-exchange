@@ -14,7 +14,7 @@
         v-bind:src="img"
         v-bind:alt="name"
       />
-      <h1>
+      <h1 v-bind:class="changePercent > 0 ? 'green' : 'red'">
         {{ name }}
         <span v-if="changePercent > 0">👍</span>
         <span v-else-if="changePercent < 0">👎</span>
@@ -24,7 +24,13 @@
         {{ showPrices ? 'Ocultar precios' : 'Ver precios' }}
       </span>
       <ul v-show="showPrices">
-        <li v-for="p in pricesWithDays" :key="p.day">{{ p.day }} - {{ p.value }}</li>
+        <li
+          v-bind:class="{ orange: p.value == price, red: p.value < price, green: p.value > price }"
+          v-for="p in pricesWithDays"
+          :key="p.day"
+        >
+          {{ p.day }} - {{ p.value }}
+        </li>
       </ul>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
