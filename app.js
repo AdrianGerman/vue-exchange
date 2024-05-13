@@ -4,13 +4,14 @@ Vue.component("CoinDetail", {
   data() {
     return {
       showPrices: false,
-      value: 0,
+      value: 0
     };
   },
   methods: {
     toggleShowPrices() {
       this.showPrices = !this.showPrices;
-    },
+      this.$emit("change-color", this.showPrices ? "FF96C8" : "3D3D3D");
+    }
   },
   computed: {
     title() {
@@ -21,7 +22,7 @@ Vue.component("CoinDetail", {
         return 0;
       }
       return this.value / this.coin.price;
-    },
+    }
   },
   template: /* vue-html */ `
   <div>
@@ -55,7 +56,7 @@ Vue.component("CoinDetail", {
     </ul>
   </div>
 
-  `,
+  `
 });
 
 new Vue({
@@ -76,17 +77,16 @@ new Vue({
           { day: "Jueves", value: 9000 },
           { day: "Viernes", value: 9400 },
           { day: "Sabado", value: 10000 },
-          { day: "Domingo", value: 10200 },
-        ],
+          { day: "Domingo", value: 10200 }
+        ]
       },
-      color: "f4f4f4",
+      color: "f4f4f4"
     };
   },
 
   methods: {
-    toggleShowPrices() {
-      this.showPrices = !this.showPrices;
-      this.color = this.color.split("").reverse().join("");
-    },
-  },
+    updateColor(color) {
+      this.color = color || this.color.split("").reverse().join("");
+    }
+  }
 });
