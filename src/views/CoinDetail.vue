@@ -120,6 +120,12 @@ export default {
         }
     },
 
+    watch: {
+        $route() {
+            this.getCoin()
+        }
+    },
+
     created() {
         this.getCoin()
     },
